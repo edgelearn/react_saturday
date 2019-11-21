@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export const Calculator = () => {
     const [calc, setCalc] = useState({
-        userInput: '',
+        input: '',
         output: '',
     })
 
