@@ -51,7 +51,6 @@ const arrayifyEquation = equationStr => {
 
         if(isNaN(equationStr[i]) && equationStr[i] !== '.') {
             equationArray.push(equationStr[i])
-            // console.log(equationStr[i])
         } else {
             let num = equationStr[i]
             
