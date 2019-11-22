@@ -23,7 +23,7 @@
   }
 }
 ```
-
+c
 5. Generate the object based upon the click of the +, -, *, and /
 
 6. Have the calculator display the answer when the user presses the =
