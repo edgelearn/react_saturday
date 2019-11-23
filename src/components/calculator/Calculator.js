@@ -68,7 +68,6 @@ export const Calculator = () => {
             <Button variant="contained" value="." color="primary">
               .
             </Button>
-
         </div>
     )
 }
