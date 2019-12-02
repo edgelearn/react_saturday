@@ -44,6 +44,7 @@ export const Calculator = () => {
               Back
             </Button>
             </div>
+            
             <br/>
             <Button onClick={() => setCalc({...calc, input: calc.input + '1' })} variant="contained" color="primary">
               1
