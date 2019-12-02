@@ -4,15 +4,24 @@ import Button from '@material-ui/core/Button';
 export const Calculator = () => {
     const [calc, setCalc] = useState({
         input: '',
-        output: 'no output',
+        output: '',
+        history: []
     })
+
+    const handleSubmit = (calcInput) => {
+      const calcOutput = eval(calcInput)
+
+      setCalc({...calc, output: calcOutput, input: '', history: [{input: calcInput, output: calcOutput}, ...calc.history]})
+    }
 
     return (
         <div>
-            <div>
-              <p>{calc.input ? calc.input : 0}</p>
-              <p>{calc.output}</p>
-            </div>
+            { calc.input ?
+              <p>{calc.input}</p>
+              :
+              <p>{calc.output ? calc.output : 0}</p>
+            }
+
             <div>
             <Button onClick={() => setCalc({...calc, input: calc.input + '-' })} variant="contained" color="secondary">
               -
@@ -34,7 +43,7 @@ export const Calculator = () => {
             </Button>
             </div>
             <div>
-            <Button onClick={() => setCalc({...calc, output: eval(calc.input)})} variant="contained" color="grey">
+            <Button onClick={() => handleSubmit(calc.input)} variant="contained" color="grey">
               =
             </Button>
             <Button onClick={() => setCalc({...calc, input: '' , output: ''})} variant="contained" color="grey">
@@ -81,6 +90,11 @@ export const Calculator = () => {
             <Button onClick={() => setCalc({...calc, input: calc.input + '.' })} variant="contained" color="primary">
               .
             </Button>
+
+          {calc.history.map(calculation => (
+            <p>{calculation.input} = {calculation.output}</p>
+          ))}
+
         </div>
     )
 }
