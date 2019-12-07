@@ -5,8 +5,6 @@ export const Calculator = () => {
     const [calc, setCalc] = useState({
         input: '',
         output: 'no output',
-
-
     })
 
 
@@ -64,6 +62,7 @@ export const Calculator = () => {
             <Button onClick={() => setCalc({...calc, input: calc.input + '4' })} variant="contained" color="primary">
               4
             </Button>
+
             <Button onClick={() => setCalc({...calc, input: calc.input + '5' })} variant="contained" color="primary">
               5
             </Button>
