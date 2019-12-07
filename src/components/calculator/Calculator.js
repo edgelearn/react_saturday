@@ -5,7 +5,15 @@ export const Calculator = () => {
     const [calc, setCalc] = useState({
         input: '',
         output: 'no output',
+
+
     })
+
+    function backButton(){
+      let equation = this.state.equation;
+      equation = equation.subtring(0, equation.length -1);
+      this.setState({equation:equation});
+    }
 
     return (
         <div>
@@ -40,11 +48,12 @@ export const Calculator = () => {
             <Button onClick={() => setCalc({...calc, input: '' , output: ''})} variant="contained" color="grey">
               Clear
             </Button>
-            <Button variant="contained" color="grey">
+
+            <Button onClick={() => backButton({...calc, output: '(state.this.equation)'})}    variant="contained" color="grey">
               Back
             </Button>
             </div>
-            
+
             <br/>
             <Button onClick={() => setCalc({...calc, input: calc.input + '1' })} variant="contained" color="primary">
               1
