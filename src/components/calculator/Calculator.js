@@ -10,9 +10,9 @@ export const Calculator = () => {
     })
 
     function backButton(){
-      let equation = calc.input.equation;
+      let input = calc.input.;
       calc.input = calc.input(0, calc.input.length -1);
-      this.setState({equation:equation});
+      this.setState({calc.input:calc.input});
     }
 
     return (
