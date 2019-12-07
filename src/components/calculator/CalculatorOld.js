@@ -7,6 +7,8 @@ export const Calculator = () => {
         output: 'no output',
     })
 
+
+
     return (
         <div>
             <div>
@@ -40,11 +42,12 @@ export const Calculator = () => {
             <Button onClick={() => setCalc({...calc, input: '' , output: ''})} variant="contained" color="grey">
               Clear
             </Button>
-            <Button variant="contained" color="grey">
+
+            <Button onClick={() => setCalc({...calc, input: calc.input.substring(0, calc.input.length -1)})}    variant="contained" color="grey">
               Back
             </Button>
             </div>
-            
+
             <br/>
             <Button onClick={() => setCalc({...calc, input: calc.input + '1' })} variant="contained" color="primary">
               1
@@ -59,6 +62,7 @@ export const Calculator = () => {
             <Button onClick={() => setCalc({...calc, input: calc.input + '4' })} variant="contained" color="primary">
               4
             </Button>
+
             <Button onClick={() => setCalc({...calc, input: calc.input + '5' })} variant="contained" color="primary">
               5
             </Button>
