@@ -10,8 +10,8 @@ export const Calculator = () => {
     })
 
     function backButton(){
-      let equation = this.state.equation;
-      equation = equation.subtring(0, equation.length -1);
+      let equation = calc.input.equation;
+      calc.input = calc.input(0, calc.input.length -1);
       this.setState({equation:equation});
     }
 
@@ -49,7 +49,7 @@ export const Calculator = () => {
               Clear
             </Button>
 
-            <Button onClick={() => backButton({...calc, output: '(state.this.equation)'})}    variant="contained" color="grey">
+            <Button onClick={() => backButton({...calc, output: '(calc.input)'})}    variant="contained" color="grey">
               Back
             </Button>
             </div>
