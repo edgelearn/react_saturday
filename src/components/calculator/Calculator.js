@@ -13,8 +13,13 @@ export const Calculator = () => {
   const handleSubmit = () => {
     if (calc.input) {
       try {
-          const calcOutput = eval(calc.input)
-    
+          let calcOutput = eval(calc.input)
+
+          //formats negative numbers for output
+          if (calcOutput < 0) {
+            calcOutput = '-(' + calcOutput.toString().substr(1) + ')'
+          }
+
           setCalc({...calc, output: calcOutput, input: '', history: [{input: calc.input, output: calcOutput}, ...calc.history]})
           
         } catch (err) {
@@ -38,50 +43,50 @@ export const Calculator = () => {
   }
 
   return (
+    <div>
+      {calc.errors.map(error => <p>{error}</p> )}
+
+      { calc.input ?
+        <p>{calc.input}</p>
+        :
+        <p>{calc.output ? calc.output : 0}</p>
+      }
+
       <div>
-        {calc.errors.map(error => <p>{error}</p> )}
-
-        { calc.input ?
-          <p>{calc.input}</p>
-          :
-          <p>{calc.output ? calc.output : 0}</p>
-        }
-
-        <div>
-        <CalcBtn variant="contained" color="secondary" value="-" btnAction={handleClick} />
-        <CalcBtn variant="contained" color="secondary" value="+" btnAction={handleClick} />
-        <CalcBtn variant="contained" color="secondary" value="*" btnAction={handleClick} />
-        <br/>
-        <CalcBtn variant="contained" color="secondary" value="/" btnAction={handleClick} />
-        <CalcBtn variant="contained" color="secondary" value="(" btnAction={handleClick} />
-        <CalcBtn variant="contained" color="secondary" value=")" btnAction={handleClick} />
-        </div>
-        <div>
-        <Button onClick={handleSubmit} variant="contained" color="grey">
-          =
-        </Button>
-        <Button onClick={() => setCalc({...calc, input: '' , output: ''})} variant="contained" color="grey">
-          Clear
-        </Button>
-        <Button variant="contained" color="grey">
-          Back
-        </Button>
-        </div>
-        <br/>
-        <CalcBtn variant="contained" color="primary" value="1" btnAction={handleClick} />
-        <CalcBtn variant="contained" color="primary" value="2" btnAction={handleClick} />
-        <CalcBtn variant="contained" color="primary" value="3" btnAction={handleClick} />
-        <br/>
-        <CalcBtn variant="contained" color="primary" value="4" btnAction={handleClick} />
-        <CalcBtn variant="contained" color="primary" value="5" btnAction={handleClick} />
-        <CalcBtn variant="contained" color="primary" value="6" btnAction={handleClick} />
-        <br/>
-        <CalcBtn variant="contained" color="primary" value="7" btnAction={handleClick} />
-        <CalcBtn variant="contained" color="primary" value="8" btnAction={handleClick} />
-        <CalcBtn variant="contained" color="primary" value="9" btnAction={handleClick} />
-        <br/>
-        <CalcBtn variant="contained" color="primary" value="0" btnAction={handleClick} />
-        <CalcBtn variant="contained" color="primary" value="." btnAction={handleClick} />
+      <CalcBtn variant="contained" color="secondary" value="-" btnAction={handleClick} />
+      <CalcBtn variant="contained" color="secondary" value="+" btnAction={handleClick} />
+      <CalcBtn variant="contained" color="secondary" value="*" btnAction={handleClick} />
+      <br/>
+      <CalcBtn variant="contained" color="secondary" value="/" btnAction={handleClick} />
+      <CalcBtn variant="contained" color="secondary" value="(" btnAction={handleClick} />
+      <CalcBtn variant="contained" color="secondary" value=")" btnAction={handleClick} />
+      </div>
+      <div>
+      <Button onClick={handleSubmit} variant="contained" color="grey">
+        =
+      </Button>
+      <Button onClick={() => setCalc({...calc, input: '' , output: ''})} variant="contained" color="grey">
+        Clear
+      </Button>
+      <Button variant="contained" color="grey">
+        Back
+      </Button>
+      </div>
+      <br/>
+      <CalcBtn variant="contained" color="primary" value="1" btnAction={handleClick} />
+      <CalcBtn variant="contained" color="primary" value="2" btnAction={handleClick} />
+      <CalcBtn variant="contained" color="primary" value="3" btnAction={handleClick} />
+      <br/>
+      <CalcBtn variant="contained" color="primary" value="4" btnAction={handleClick} />
+      <CalcBtn variant="contained" color="primary" value="5" btnAction={handleClick} />
+      <CalcBtn variant="contained" color="primary" value="6" btnAction={handleClick} />
+      <br/>
+      <CalcBtn variant="contained" color="primary" value="7" btnAction={handleClick} />
+      <CalcBtn variant="contained" color="primary" value="8" btnAction={handleClick} />
+      <CalcBtn variant="contained" color="primary" value="9" btnAction={handleClick} />
+      <br/>
+      <CalcBtn variant="contained" color="primary" value="0" btnAction={handleClick} />
+      <CalcBtn variant="contained" color="primary" value="." btnAction={handleClick} />
 
       {calc.history.map(calculation => (
         <p>{calculation.input} = {calculation.output}</p>
